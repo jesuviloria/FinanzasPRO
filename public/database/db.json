@@ -1,0 +1,81 @@
+{
+  "operations": [
+    {
+      "id": "1",
+      "description": "Monthly Salary",
+      "amount": 3000,
+      "type": "income",
+      "category": "1",
+      "date": "2021-07-25"
+    },
+    {
+      "id": "2",
+      "description": "Groceries",
+      "amount": 150.75,
+      "type": "expense",
+      "category": "2",
+      "date": "2022-07-26"
+    },
+    {
+      "id": "4",
+      "description": "Freelance Project Payment",
+      "amount": 750,
+      "type": "income",
+      "category": "1",
+      "date": "2023-07-28"
+    },
+    {
+      "id": "5",
+      "description": "Dinner with Friends",
+      "amount": 60,
+      "type": "expense",
+      "category": "4",
+      "date": "2024-07-28"
+    },
+    {
+      "id": "32b3",
+      "description": "Buy of PC-Gamer",
+      "amount": 1520,
+      "type": "expense",
+      "category": "ae83",
+      "date": "2025-07-29"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Income"
+    },
+    {
+      "id": "2",
+      "name": "Food"
+    },
+    {
+      "id": "3",
+      "name": "Bills"
+    },
+    {
+      "id": "4",
+      "name": "Entertainment"
+    },
+    {
+      "id": "5",
+      "name": "Transportation"
+    },
+    {
+      "id": "6",
+      "name": "Health"
+    },
+    {
+      "id": "ae83",
+      "name": "Electronics"
+    }
+  ],
+  "users": [
+    {
+      "id": "j12H",
+      "username": "terecita",
+      "password": "terecita*2025"
+    }
+  ]
+}

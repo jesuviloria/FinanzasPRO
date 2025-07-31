@@ -1,0 +1,515 @@
+/* General Resets & Variables */
+:root {
+    /* --- Pastel Color Palette for a Clean Look --- */
+    --primary-color: Green; /* Soft Muted Green/Teal - for primary buttons, active states */
+    --secondary-color: #8DAB9C; /* Slightly deeper Muted Green/Teal - for secondary elements */
+    --accent-color-income: Green; /* Light Mint Green - for income highlights */
+    --accent-color-expense: red; /* Soft Coral/Peach - for expense highlights */
+    --text-color: #555555; /* Medium Dark Gray - for excellent readability on light backgrounds */
+
+    /* --- Background Gradient (Very subtle, airy pastels) --- */
+    --background-gradient-start: #00d1b2; /* Off-white, almost cream */
+    --background-gradient-end: #00d1b2bb;   /* Very pale blue-green */
+
+    /* --- "Apple Glass" Effect Colors (Higher Opacity for Visibility) --- */
+    --glass-background-rgba: rgba(255, 255, 255, 0.6); /* Translucent White (60% opaque) */
+    --glass-border-rgba: rgba(255, 255, 255, 0.8);   /* More defined white border (80% opaque) */
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Softer, subtle shadow */
+
+    --border-radius: 12px;
+    --padding-base: 1.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+    padding: 20px;
+    overflow-y: auto; /* Allow scrolling for content that overflows viewport height */
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Specific styling for the login page to center its content */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 40px); /* Adjust for padding on body */
+}
+
+
+/* Glassmorphism Base Styles */
+.glass-card {
+    background: var(--glass-background-rgba);
+    backdrop-filter: blur(10px); /* Keep 10px or experiment with 12px for more blur */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border-rgba);
+    border-radius: var(--border-radius);
+    box-shadow: var(--glass-shadow);
+    padding: var(--padding-base);
+    margin-bottom: var(--padding-base);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+    transform: translateY(-2px);
+}
+
+/* Hidden Utility Class */
+.hidden {
+    display: none !important;
+}
+
+/* Login Section */
+#login-section {
+    max-width: 400px;
+    width: 100%; /* Make it fill available width up to max-width */
+    text-align: center;
+}
+
+#login-section h2 {
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--glass-border-rgba);
+    background-color: rgba(255, 255, 255, 0.05); /* Slightly less transparent */
+    color: var(--text-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn.secondary {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-color);
+    border: 1px solid var(--glass-border-rgba);
+}
+
+.btn.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn.danger {
+    background-color: var(--accent-color-expense);
+    color: white;
+}
+
+.btn.danger:hover {
+    background-color: #c82333;
+}
+
+/* App Header & Navigation */
+.app-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--glass-border-rgba);
+    background: var(--glass-background-rgba); /* Header also gets glass effect */
+    border-radius: var(--border-radius);
+    box-shadow: var(--glass-shadow);
+}
+
+.app-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.app-header nav {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 10px; /* Space between nav buttons */
+    justify-content: center;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none; /* For <a> tags */
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.nav-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn.logout {
+    color: var(--accent-color-expense);
+}
+
+.nav-btn.logout:hover {
+    background-color: rgba(220, 53, 69, 0.2);
+}
+
+/* Content Sections */
+/* The main sections within each HTML file */
+#operations-main, #categories-main, #reports-main {
+    min-height: 200px; /* Adjust as needed */
+}
+
+
+/* Balance Summary */
+.balance-summary {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: space-around;
+    gap: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.balance-summary p {
+    flex: 1; /* Allow items to grow and shrink */
+    min-width: 150px; /* Ensure a minimum width for balance items */
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.balance-summary .income {
+    color: var(--accent-color-income);
+    font-weight: bold;
+}
+
+.balance-summary .expense {
+    color: var(--accent-color-expense);
+    font-weight: bold;
+}
+
+.balance-summary .balance {
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+/* Filters and Sort */
+.filters-sort {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    align-items: flex-end; /* Align buttons/labels at the bottom */
+}
+
+.filters-sort .filter-group label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Tables (Operations, Categories, Reports) */
+.operations-table,
+.category-table,
+.report-table {
+    overflow-x: auto; /* Enable horizontal scrolling for small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    min-width: 600px; /* Minimum width for tables to prevent excessive squishing */
+}
+
+table th,
+table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+table th {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+table tr:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Specific table colors */
+.operation-type-income {
+    color: var(--accent-color-income);
+    font-weight: bold;
+}
+.operation-type-expense {
+    color: var(--accent-color-expense);
+    font-weight: bold;
+}
+
+/* Action Buttons within tables */
+table .action-buttons button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    transition: color 0.2s ease;
+}
+
+table .action-buttons button:hover {
+    color: white;
+}
+
+table .action-buttons button.delete-btn {
+    color: var(--accent-color-expense);
+}
+table .action-buttons button.delete-btn:hover {
+    color: white;
+}
+
+table button.delete-cat-btn {
+    color: var(--accent-color-expense);
+}
+
+/* Report Summary Cards */
+.report-summary-cards {
+    display: grid;
+    gap: var(--padding-base);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: var(--padding-base);
+}
+
+.summary-card {
+    text-align: center;
+}
+
+.summary-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.summary-card p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-color-income); /* Default for numbers */
+}
+.summary-card p.expense-value {
+    color: var(--accent-color-expense);
+}
+
+
+/* Modals (Operation Form) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay for modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    /* inherits glass-card styles */
+    animation: fadeIn 0.3s ease-out;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Error and Info Messages */
+.error-message {
+    color: var(--accent-color-expense);
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.info-message {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small Screens (e.g., phones) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .app-header nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .glass-card {
+        padding: 1rem;
+    }
+
+    .balance-summary {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .balance-summary p {
+        width: 100%;
+        max-width: 250px; /* Constrain width on small screens */
+    }
+
+    .filters-sort {
+        grid-template-columns: 1fr; /* Stack filters vertically */
+    }
+
+    table {
+        min-width: unset; /* Remove min-width on very small screens, let overflow-x handle it */
+    }
+
+    table th, table td {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+}
+
+/* Medium Screens (e.g., tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .app-header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .filters-sort {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for filters */
+    }
+
+    .report-summary-cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+}
+
+/* Large Screens (Desktop) - already handled by default styles and max-width */
+@media (min-width: 1025px) {
+    .app-header nav {
+        flex-direction: row;
+        gap: 20px;
+    }
+}

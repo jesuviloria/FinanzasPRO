@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinancesPRO - Operations</title>
+  <link rel="stylesheet" href="/src/styles/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;📈&lt;/text&gt;&lt;/svg&gt;">
+</head>
+
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>FinancesPRO</h1>
+      <nav>
+        <a href="operations.html" id="operations-btn" class="nav-btn active">Operations</a>
+        <a href="categories.html" id="categories-btn" class="nav-btn">Categories</a>
+        <a href="reports.html" id="reports-btn" class="nav-btn">Reports</a>
+        <button id="logout-btn" class="nav-btn logout">Logout</button>
+      </nav>
+    </header>
+
+    <main id="operations-main">
+      <div class="balance-summary glass-card">
+        <p>Income: <span id="total-income" class="income">$0.00</span></p>
+        <p>
+          Expenses: <span id="total-expenses" class="expense">$0.00</span>
+        </p>
+        <p>
+          Total Balance: <span id="total-balance" class="balance">$0.00</span>
+        </p>
+      </div>
+
+      <div class="filters-sort glass-card">
+        <h3>Filters and Sorting</h3>
+        <div class="filter-group">
+          <label for="filter-type">Type:</label>
+          <select id="filter-type">
+            <option value="all">All</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filter-category">Category:</label>
+          <select id="filter-category">
+            <option value="all">All</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sort-by">Sort by:</label>
+          <select id="sort-by">
+            <option value="recent">Most Recent</option>
+            <option value="less-recent">Less Recent</option>
+            <option value="higher-amount">Higher Amount</option>
+            <option value="lower-amount">Lower Amount</option>
+            <option value="a-z">A-Z (Description)</option>
+            <option value="z-a">Z-A (Description)</option>
+          </select>
+        </div>
+        <button id="clear-filters-btn" class="btn secondary">
+          Clear Filters
+        </button>
+      </div>
+
+      <button id="add-operation-btn" class="btn primary add-btn">
+        <i class="fas fa-plus"></i> New Operation
+      </button>
+
+      <div>
+        <br>
+      </div>
+
+      <div id="operations-list" class="operations-table glass-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p id="no-operations-message" class="info-message hidden">
+          No operations registered.
+        </p>
+      </div>
+
+      <div id="operation-modal" class="modal-overlay hidden">
+        <div class="modal-content glass-card">
+          <span class="close-modal">&times;</span>
+          <h3 id="operation-form-title">New Operation</h3>
+          <form id="operation-form">
+            <div class="form-group">
+              <label for="operation-description">Description:</label>
+              <input type="text" id="operation-description" required />
+            </div>
+            <div class="form-group">
+              <label for="operation-amount">Amount:</label>
+              <input type="number" id="operation-amount" min="0.01" step="0.01" required />
+            </div>
+            <div class="form-group">
+              <label for="operation-type">Type:</label>
+              <select id="operation-type" required>
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="operation-category">Category:</label>
+              <select id="operation-category" required></select>
+            </div>
+            <div class="form-group">
+              <label for="operation-date">Date:</label>
+              <input type="date" id="operation-date" required />
+            </div>
+            <button type="submit" class="btn primary">Save Operation</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/src/js/operations.js"></script>
+</body>
+
+</html>

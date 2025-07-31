@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinancesPRO - Categories</title>
+  <link rel="stylesheet" href="/src/styles/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;📈&lt;/text&gt;&lt;/svg&gt;">
+</head>
+
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>FinancesPRO</h1>
+      <nav>
+        <a href="operations.html" id="operations-btn" class="nav-btn">Operations</a>
+        <a href="categories.html" id="categories-btn" class="nav-btn active">Categories</a>
+        <a href="reports.html" id="reports-btn" class="nav-btn">Reports</a>
+        <button id="logout-btn" class="nav-btn logout">Logout</button>
+      </nav>
+    </header>
+
+    <main id="categories-main">
+      <h2>Category Management</h2>
+      <form id="category-form" class="glass-card form-container">
+        <div class="form-group">
+          <label for="category-name">Category Name:</label>
+          <input type="text" id="category-name" required />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Add Category</button>
+          <button type="button" id="cancel-category-edit-btn" class="btn secondary hidden">
+            Cancel
+          </button>
+        </div>
+      </form>
+      <div id="categories-list" class="category-table glass-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p id="no-categories-message" class="info-message hidden">
+          No categories registered.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/src/js/categories.js"></script>
+</body>
+
+</html>

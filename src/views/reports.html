@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinancesPRO - Reports</title>
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;📈&lt;/text&gt;&lt;/svg&gt;">
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="app-header">
+        <h1>FinancesPRO</h1>
+        <nav>
+          <a href="operations.html" id="operations-btn" class="nav-btn"
+            >Operations</a
+          >
+          <a href="categories.html" id="categories-btn" class="nav-btn"
+            >Categories</a
+          >
+          <a href="reports.html" id="reports-btn" class="nav-btn active"
+            >Reports</a
+          >
+          <button id="logout-btn" class="nav-btn logout">Logout</button>
+        </nav>
+      </header>
+
+      <main id="reports-main">
+        <h2>Reports</h2>
+        <div class="report-summary-cards">
+          <div class="summary-card glass-card">
+            <h3>Category with Highest Income</h3>
+            <p id="highest-income-category">N/A</p>
+          </div>
+          <div class="summary-card glass-card">
+            <h3>Category with Highest Expense</h3>
+            <p id="highest-expense-category">N/A</p>
+          </div>
+          <div class="summary-card glass-card">
+            <h3>Category with Highest Balance</h3>
+            <p id="highest-balance-category">N/A</p>
+          </div>
+          <div class="summary-card glass-card">
+            <h3>Month with Highest Income</h3>
+            <p id="highest-income-month">N/A</p>
+          </div>
+          <div class="summary-card glass-card">
+            <h3>Month with Highest Expense</h3>
+            <p id="highest-expense-month">N/A</p>
+          </div>
+        </div>
+
+        <div class="report-table glass-card">
+          <h3>Totals by Category</h3>
+          <table id="category-totals-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Income</th>
+                <th>Expense</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="report-table glass-card">
+          <h3>Totals by Month</h3>
+          <table id="month-totals-table">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Income</th>
+                <th>Expense</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="/src/js/reports.js"></script>
+  </body>
+</html>

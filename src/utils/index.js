@@ -1,0 +1,1 @@
+export { API_BASE_URL, AUTH_STORAGE_KEY, FILTERS_STORAGE_KEY } from "./variables.js";
